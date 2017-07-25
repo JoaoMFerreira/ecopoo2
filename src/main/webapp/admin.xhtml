@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Entrar</title>
+</h:head>
+<h:body>
+	<ui:composition template="template/storeTemplatePublic.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<div class="ui-g">
+					<div class="ui-g-6">
+						<h:form>
+							<p:growl id="growl" life="2000" />
+							<p:panel header="Personal Details">
+								<p:messages />
+								<h:panelGrid columns="2" columnClasses="label, value">
+									<h:outputText value="Usuario: *" />
+									<p:inputText value="#{loginController.user}" required="true"
+										label="Usuario" />
+
+									<h:outputText value="Senha: *" />
+									<p:password id="pwd2" value="#{loginController.password}"
+										label="Password 2" required="true" />
+
+									<p:commandButton value="Entrar" id="ajax" update="growl"
+										actionListener="#{loginController.login}"
+										styleClass="ui-priority-primary" />
+
+								</h:panelGrid>
+							</p:panel>
+						</h:form>
+					</div>
+
+					<div class="ui-g-6">
+						<h:form>
+							<p:growl id="growl" life="2000" />
+							<p:panel header="Novo Cadastro">
+								<p:messages />
+								<h:panelGrid columns="1" columnClasses="label">
+									<h2>Não possui cadastro ?</h2>
+									<div>
+										<p:link outcome="wizard" value="Cadastrar">
+
+										</p:link>
+									</div>
+								</h:panelGrid>
+							</p:panel>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

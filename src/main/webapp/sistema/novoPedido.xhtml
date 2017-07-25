@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body>
+	<ui:composition template="/template/storeTemplate.xhtml">
+		<ui:define name="content">
+			<div class="container">
+
+				<p:growl id="msgs" showDetail="true" />
+
+				<h3 style="margin-top: 0">Basic</h3>
+				<p:tabView>
+					<p:tab title="Pizzas">
+						<h:panelGrid columns="2" cellpadding="10">
+
+							<h:outputText value="The story begins as Don Vito Corleone..." />
+						</h:panelGrid>
+					</p:tab>
+					<p:tab title="Massas">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:form id="form">
+								<p:repeat value="#{pedidoController.massas}" var="massa">
+									<h:panelGrid columns="2" style="width:100%"
+										columnClasses="logo,detail">
+
+										<p:commandLink oncomplete="PF('adicionalDialog').show()">
+											<f:setPropertyActionListener value="#{massa}"
+												target="#{pedidoController.massaSelecionada}" />
+											<p:graphicImage name="images/#{massa.nome}.jpg" />
+										</p:commandLink>
+
+										<p:outputPanel>
+											<h:panelGrid columns="2" cellpadding="5">
+												<h:outputText value="Nome:" />
+												<h:outputText value="#{massa.nome}"
+													style="font-weight: bold" />
+
+												<h:outputText value="Preço:" />
+												<h:outputText value="#{massa.preco}"
+													style="font-weight: bold" />
+											</h:panelGrid>
+										</p:outputPanel>
+									</h:panelGrid>
+									<hr />
+								</p:repeat>
+								<p:dialog header="Adicionais" widgetVar="adicionalDialog"
+									width="950" modal="true" showEffect="blind"
+									hideEffect="explode">
+									<p:outputPanel id="carDetail" style="text-align:center;">
+										<h:panelGrid columns="1" style="width:100%"
+											columnClasses="logo,detail">
+
+											<h:outputLabel for="multiple" value="Escolha os Adicionais:" />
+											<p:selectCheckboxMenu id="multiple"
+												value="#{pedidoController.adicionaisSelecionados}"
+												label="Adicionais" multiple="true" filter="true"
+												filterMatchMode="startsWith" panelStyle="width:250px">
+												<f:selectItems value="#{pedidoController.adicionais}" />
+											</p:selectCheckboxMenu>
+										</h:panelGrid>
+
+
+										<p:growl id="growl" life="2000" />
+										
+										<p:commandButton value="Adicionar" id="ajax" update="growl"
+											actionListener="#{pedidoController.adicionarCarrinho}"
+											styleClass="ui-priority-primary" />
+
+									</p:outputPanel>
+
+								</p:dialog>
+
+							</h:form>
+						</h:panelGrid>
+					</p:tab>
+				</p:tabView>
+
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

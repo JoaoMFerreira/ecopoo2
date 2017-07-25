@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet name="styles.css" library="css" />
+</h:head>
+
+<h:body>
+
+	<div id="page">
+		<div id="header" class="ui-g ui-g-responsive">
+			<div class="ui-g-col-12" style="width:100%">
+				<ui:insert name="header">
+					<ui:include src="/template/storeHeaderPublic.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+		<div id="main" class="ui-g ui-g-responsive">
+			<div id="content" class="ui-g-col-12">
+				<ui:insert name="content">
+					<ui:include src="/template/storeContent.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+		<div id="footer" class="ui-g ui-g-responsive">
+			<div class="ui-g-col-12" style="width: 100%">
+				<ui:insert name="footer">
+					<ui:include src="/template/storeFooter.xhtml" />
+				</ui:insert>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>
