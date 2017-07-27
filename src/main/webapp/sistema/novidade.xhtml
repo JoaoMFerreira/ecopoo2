@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body>
+	<ui:composition template="/template/storeTemplate.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<h:form>
+					<p:growl id="msgs" showDetail="true" />
+
+					<p:fieldset legend="Pedido Louco" style="margin-bottom:20px">
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:graphicImage name="demo/images/godfather/godfather1.jpg" />
+							<h:outputText
+								value="O pedido louco da pizzaria pizza hut seleciona uma pizza e uma massa com um desconto de 15% no valor 
+								total dos produtos, porém a pizza, a massa e os adicionais ( 3 adicionais) serão escolhidos de forma aleatória
+								dentre os disponiveis!" />
+						</h:panelGrid>
+					</p:fieldset>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
